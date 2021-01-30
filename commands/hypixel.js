@@ -1,7 +1,7 @@
 const { DiscordAPIError } = require('discord.js');
-const { hypixel_api} = require('../config.json'); 
+const { hypixel_api } = require('../config.json'); 
 const Hypixel = require('hypixel-api-reborn');
-const hypixel = new Hypixel.Client('')
+const hypixel = new Hypixel.Client(hypixel_api)
 
 module.exports = {
     name: "hypixel",
