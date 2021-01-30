@@ -66,7 +66,6 @@ module.exports = {
                         { name: 'Last played game', value: player.recentlyPlayedGame.toString()}
                     )
                 message.channel.send(statEmbed);
-                console.log(player)
             }).catch(e => {
                 console.log(e)
             })
