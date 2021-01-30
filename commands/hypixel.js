@@ -1,3 +1,4 @@
+// Require Hypixel Api wrapper
 const { DiscordAPIError } = require('discord.js');
 const { hypixel_api } = require('../config.json'); 
 const Hypixel = require('hypixel-api-reborn');
@@ -11,7 +12,7 @@ module.exports = {
             message.channel.send("You need to provide a player name!").then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-        }if (args.length == 2){
+        }if (args.length == 2){ // checks which stats user wants
             switch(args[1]){
                 case 'skywars':
                     getSkywarsStats(args[0], message)
@@ -70,16 +71,18 @@ module.exports = {
                 console.log(e)
             })
         }
-      
+
+        // function to get each stat
+
         function getSkywarsStats(player, message){
-            hypixel.getPlayer(player).then(player => {
+            hypixel.getPlayer(player).then(player => { // requests api for the player object
                 if(player.nickname.endsWith('s')){
                     var suffix = "'"
                 }else {
                     var suffix = "'s"
                 }
 
-                const statEmbed = new discord.MessageEmbed()
+                const statEmbed = new discord.MessageEmbed() // creates embed message with stats
                     .setColor('#ff007f')
                     .setTitle(player.nickname + suffix + " Skywars stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
