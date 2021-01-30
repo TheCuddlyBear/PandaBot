@@ -24,6 +24,7 @@
     "giphy": "0.0.4",
     "hypixel-api-reborn": "^5.1.1",
     "minecraft-server-util": "^3.4.2",
+    "mysql": "^2.18.1",
     "ytdl-core": "^4.4.5",
     "ytsearcher": "^1.2.3"
   }

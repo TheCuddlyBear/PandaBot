@@ -106,6 +106,9 @@ client.on('message', async(message) => { // runs when someone sends a message
         case 'spam':
             client.commands.get("spam").execute(message, args)
             break;
+        case 'mcstats':
+            client.commands.get("mcstats").execute(message, args)
+            break;
     }
 
     // Function to insert entire youtube playlist into the music queue
