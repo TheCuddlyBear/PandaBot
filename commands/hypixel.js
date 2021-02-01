@@ -1,51 +1,52 @@
 // Require Hypixel Api wrapper
-const { DiscordAPIError } = require('discord.js');
 const { hypixel_api } = require('../config.json'); 
 const Hypixel = require('hypixel-api-reborn');
 const hypixel = new Hypixel.Client(hypixel_api)
 
+const discord = require('discord.js')
+
 module.exports = {
-    name: "hypixel",
-    description: "Get your hypixel stats",
-    execute(message, args, discord){
-        if(args.length == 0){
-            message.channel.send("You need to provide a player name!").then(msg => {
+    id: "hypixel",
+    aliases: ["hp", "hyp", "pixel"],
+    channels: "any",
+    exec: (call) => {
+        if(call.args.length == 0){
+            call.message.channel.send("You need to provide a player name!").then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-        }if (args.length == 2){ // checks which stats user wants
-            switch(args[1]){
+        }if (call.args.length == 2){ // checks which stats user wants
+            switch(call.args[1]){
                 case 'skywars':
-                    getSkywarsStats(args[0], message)
-                    message.delete();
+                    getSkywarsStats(call.args[0], call.message)
+                    call.message.delete();
                     break;
                 case 'bedwars':
-                    getBedwarsStats(args[0], message)
-                    message.delete();
+                    getBedwarsStats(call.args[0], call.message)
+                    call.message.delete();
                     break;
                 case 'murdermystery':
-                    getMurderStats(args[0], message)
-                    message.delete();
+                    getMurderStats(call.args[0], call.message)
+                    call.message.delete();
                     break;
                 case 'buildbattle':
-                    getBuildStats(args[0], message)
-                    message.delete();
+                    getBuildStats(call.args[0], call.message)
+                    call.message.delete();
                     break;
                 case 'skyblock':
-                    message.channel.send("You can view your skyblock stats here: https://sky.shiiyu.moe/stats/" + args[0])
-                    message.delete();
+                    call.message.channel.send("You can view your skyblock stats here: https://sky.shiiyu.moe/stats/" + call.args[0])
+                    call.message.delete();
                     break;
                 case 'vampirez':
-                    getVampireStats(args[0], message)
-                    message.delete();
+                    getVampireStats(call.args[0], call.message)
+                    call.message.delete();
                     break;
                 case 'guild':
-                    getGuildStats(args[0], message)
-                    message.delete();
+                    getGuildStats(call.args[0], call.message)
+                    call.message.delete();
                     break;
             }
-
         }else {
-            hypixel.getPlayer(args[0]).then(player => {
+            hypixel.getPlayer(call.args[0]).then(player => {
                 if(player.nickname.endsWith('s')){
                     var suffix = "'"
                 }else {
@@ -66,13 +67,12 @@ module.exports = {
                         { name: 'Last login', value: player.lastLogin, inline: true },
                         { name: 'Last played game', value: player.recentlyPlayedGame.toString()}
                     )
-                message.channel.send(statEmbed);
+                call.message.channel.send(statEmbed);
+                call.message.delete();
             }).catch(e => {
                 console.log(e)
             })
         }
-
-        // function to get each stat
 
         function getSkywarsStats(player, message){
             hypixel.getPlayer(player).then(player => { // requests api for the player object
@@ -238,5 +238,5 @@ module.exports = {
                 console.log(e)
             })
         }
-}
+    }
 }
