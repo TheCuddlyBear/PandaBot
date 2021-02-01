@@ -1,5 +1,5 @@
 // Require Hypixel Api wrapper
-const { hypixel_api } = require('../config.json'); 
+const { hypixel_api, bot_version } = require('../config.json'); 
 const Hypixel = require('hypixel-api-reborn');
 const hypixel = new Hypixel.Client(hypixel_api)
 
@@ -54,11 +54,11 @@ module.exports = {
                 }
 
                 const statEmbed = new discord.MessageEmbed()
-                    .setColor('#ff007f')
+                    .setColor('#FF0033')
                     .setTitle(player.nickname + suffix + " Hypixel stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter('Hypixel Stats')
+                    .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
                     .addFields(
                         { name: 'Rank', value: player.rank, inline: true },
                         { name: 'Karma', value: player.karma, inline: true },
@@ -83,11 +83,11 @@ module.exports = {
                 }
 
                 const statEmbed = new discord.MessageEmbed() // creates embed message with stats
-                    .setColor('#ff007f')
+                    .setColor('#FF0033')
                     .setTitle(player.nickname + suffix + " Skywars stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter('Hypixel Stats')
+                    .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
                     .addFields(
                         { name: 'Coins', value: player.stats.skywars.coins, inline: true },
                         { name: 'Souls', value: player.stats.skywars.souls, inline: true },
@@ -112,11 +112,11 @@ module.exports = {
                 }
 
                 const statEmbed = new discord.MessageEmbed()
-                    .setColor('#ff007f')
+                    .setColor('#FF0033')
                     .setTitle(player.nickname + suffix + " Murder Mystery stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter('Hypixel Stats')
+                    .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
                     .addFields(
                         { name: 'Coins', value: player.stats.murdermystery.coins, inline: true },
                         { name: 'Murderer Wins', value: player.stats.murdermystery.winsAsMurderer, inline: true },
@@ -141,11 +141,11 @@ module.exports = {
                 }
 
                 const statEmbed = new discord.MessageEmbed()
-                    .setColor('#ff007f')
+                    .setColor('#FF0033')
                     .setTitle(player.nickname + suffix + " Bedwars stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter('Hypixel Stats')
+                    .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
                     .addFields(
                         { name: 'Coins', value: player.stats.bedwars.coins, inline: true },
                         { name: 'Level', value: player.stats.bedwars.level, inline: true },
@@ -171,11 +171,11 @@ module.exports = {
                 }
 
                 const statEmbed = new discord.MessageEmbed()
-                    .setColor('#ff007f')
+                    .setColor('#FF0033')
                     .setTitle(player.nickname + suffix + " Build Battle stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter('Hypixel Stats')
+                    .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
                     .addFields(
                         { name: 'Score', value: player.stats.buildbattle.score, inline: true },
                         { name: 'Played Games', value: player.stats.buildbattle.playedGames, inline: true },
@@ -201,11 +201,11 @@ module.exports = {
                 }
 
                 const statEmbed = new discord.MessageEmbed()
-                    .setColor('#ff007f')
+                    .setColor('#FF0033')
                     .setTitle(player.nickname + suffix + " VampireZ stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter('Hypixel Stats')
+                    .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
                     .addFields(
                         { name: 'Human', value: `Kills: ${player.stats.vampirez.human.kills} \n Deaths: ${player.stats.vampirez.human.deaths} \n K/D Ratio: ${player.stats.vampirez.human.KDRatio} \n Wins: ${player.stats.vampirez.human.wins}`, inline: true },
                         { name: 'Vampire', value: `Kills: ${player.stats.vampirez.vampire.kills} \n Deaths: ${player.stats.vampirez.vampire.deaths} \n K/D Ratio: ${player.stats.vampirez.vampire.KDRatio}`, inline: true },
@@ -226,10 +226,10 @@ module.exports = {
                 }
 
                 const statEmbed = new discord.MessageEmbed()
-                    .setColor('#ff007f')
+                    .setColor('#FF0033')
                     .setTitle(guild.name + suffix + " stats")
                     .setTimestamp()
-                    .setFooter('Hypixel Stats')
+                    .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
                     .addFields(
                         { name: 'Level', value: guild.level, inline: true }
                     )

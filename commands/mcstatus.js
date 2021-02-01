@@ -1,16 +1,18 @@
+const { bot_version } = require('../config.json');
 const minecraftUtil = require('minecraft-server-util');
-const Discord = require('discord.js')
+const Discord = require('discord.js');
 
 module.exports = {
-    id: "mcstats",
+    id: "mcstatus",
     aliases: ["mc"],
     channels: "any",
     exec: async (call) => {
         minecraftUtil.status('play.takato.eu', { port: 25565}) // Get status
                 .then((response) => {
                     const statusEmbed = new Discord.MessageEmbed() // Create embed with status
-                        .setColor('#ff007f')
+                        .setColor('#FF0033')
                         .setTitle('Roses Minecraft Status')
+                        .setFooter(`Panda Jr. v${bot_version}`)
                         .setThumbnail('https://minecraft-mp.com/images/favicon/277055.png')
                         .addFields(
                             { name: 'Server IP', value: 'play.takato.eu' },
