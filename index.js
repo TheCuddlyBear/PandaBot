@@ -1,53 +1,14 @@
-/* 
-This bot is created specifically for the Roses Discord Server
-It can be rewritten to be used for other servers, e.g. music function
-already has been rewritten.
-*/
-
-// Call filesystem, discord and config
-const fs = require('fs');
+// Bot essentials
+const handler = require('d.js-command-handler');
+const { token, prefix } = require('./config.json');
 const Discord = require('discord.js');
-const { prefix, token, youtube_api } = require('./config.json');
-
-// Call youtube api and ytdl
-const { YTSearcher } = require('ytsearcher');
-const YoutubeAPI = require('discord-youtube-api');
-const searcher = new YoutubeAPI(youtube_api);
-const ytdl = require('ytdl-core');
-const { randomBytes } = require('crypto');
-const { waitForDebugger } = require('inspector');
-const musicQueue = new Map();
-
-//Minecraft server settings
-const minecraftUtil = require('minecraft-server-util');
-const settingsMap = new Map();
-
-// Call discord client + commands
-const client = new Discord.Client();
-client.commands = new Discord.Collection();
-
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
-}
-
-client.once('ready', () => {
-    console.log(`I'm loggin in as user: ${client.user.tag} (${client.user.id})`); // notifies console that bot his logging in
-    client.user.setActivity("Roses Discord Server", { // sets activity of bot to "Watching Roses Discord server"
-        type: "WATCHING"
-    })
-     
-});
-
-client.login(token); // bot logs in
  
-client.on('message', async(message) => { // runs when someone sends a message
-    if (!message.content.startsWith(prefix) || message.author.bot) return; // Checks if message contains prefix set in config, else it will ignore message
+let client = new Discord.Client({ disableEveryone: true });
 
-    const serverQueue = musicQueue.get(message.guild.id); // Get music queue
+// music queue
+client.queue = new Discord.Collection();
  
+<<<<<<< HEAD
     const args = message.content.slice(prefix.length).trim().split(/ +/g) // Args variable
     const command = args.shift().toLowerCase(); // The actual command
     const longArgs = message.content.slice(prefix.length).trim(); // Argument with spaces.
@@ -215,108 +176,12 @@ client.on('message', async(message) => { // runs when someone sends a message
                     playing: true
                 };
                 musicQueue.set(message.guild.id, queueConstructor); // add server queue to the bot wide musicqueue
+=======
+client.on('ready', () => {
+    console.log(client.user.username + ' has successfully booted up.');
+});
+>>>>>>> 337ebe12e5e0a28a48b48040d0883db5797cab15
  
-                queueConstructor.songs.push(song); // push song into songs arraw
+handler(__dirname + '/commands', client, { customPrefix: prefix });
  
-                try{ // try to join voice channel of user
-                    let connection = await vc.join();
-                    queueConstructor.connection = connection;
-                    play(message.guild, queueConstructor.songs[0]);
-                    message.delete();
-                }catch (err){
-                    console.error(err);
-                    musicQueue.delete(message.guild.id);
-                    return message.channel.send(`I wasn't able to join the voice chat ${err}`)
-                }
-            }else{ // push song into array if queue already existed
-                serverQueue.songs.push(song);
-                message.delete();
-                return message.channel.send("I've added the song to the queue ```" + ` ${song.title}` + "```").then(msg => {
-                    msg.delete({ timeout: 10000 })
-                })
-            }
-        }
-    }
-
-    // play function
-    function play(guild, song){
-        const serverQueue = musicQueue.get(guild.id);
-        if(!song){ // If there are no songs left, leave voice channel
-            serverQueue.voiceChannel.leave();
-            musicQueue.delete(guild.id);
-            return;
-        }
-        console.log(`Now playing: ${song.title}`); // Announce what song is now playing to console
-        const dispatcher = serverQueue.connection
-            .play(ytdl(song.url), { volume: serverQueue.volume })
-            .on('finish', () =>{
-                serverQueue.songs.shift();
-                play(guild, serverQueue.songs[0]);
-            })
-            serverQueue.textChannel.send("I'm now playing: ```" + `${serverQueue.songs[0].title} || Duration: ${serverQueue.songs[0].duration.minutes}:${serverQueue.songs[0].duration.seconds}` + "```" ).then(msg => { // announce to user what song is playing.
-                msg.delete({ timeout: 10000 })
-            })
-    }
-
-    // function to stop playing music
-    function stop (message, serverQueue){ 
-        if(!message.member.voice.channel) // check if user is in voice channel
-            return message.channel.send("You need to join the voice chat first!").then(msg => {
-                msg.delete({ timeout: 10000 })
-            })
-        message.channel.send("I will stop playing now, see you next time :wink:").then(msg => {
-            msg.delete({ timeout: 10000 })
-        })    
-        serverQueue.songs = [];
-        serverQueue.connection.dispatcher.end(); // end song playing
-    }
-    function skip (message, serverQueue){ // skip songs
-        if(!message.member.voice.channel)// check if user is in voice channel
-            return message.channel.send("You need to join the voice chat first").then(msg => {
-                msg.delete({ timeout: 10000 })
-            })
-        if(!serverQueue)
-            return message.channel.send("There is nothing to skip!").then(msg => {
-                msg.delete({ timeout: 10000 })
-            })
-        serverQueue.connection.dispatcher.end();
-    }
-    function queue (message, serverQueue){
-        if(!message.member.voice.channel)
-            return message.channel.send("You need to join the voice chat first").then(msg => {
-                msg.delete({ timeout: 10000 })
-            })
-        if(!serverQueue)
-            return message.channel.send("I couldn't find any queued songs!").then(msg => {
-                msg.delete({ timeout: 10000 })
-            })
-            var i;
-            var queueMsg
-            for (i = 0; i < serverQueue.songs.length; i++) {
-                var index
-                
-                if(isNaN(index)){
-                    index = 1;
-                }else {
-                    index = i + 1;
-                }
-                queueMsg = queueMsg + index + ' - ' + serverQueue.songs[i].title + '\n';
-            }
-
-            message.channel.send('```' + queueMsg + '```').then(msg => {
-                msg.delete({ timeout: 10000 });
-            })
-    }
-    function pause(message, serverQueue){
-        const dispatcher = serverQueue.connection
-
-        dispatcher.pause();
-        message.channel.send("I have paused the stream.")
-    }
-    function resume(message, serverQueue){
-        const dispatcher = serverQueue.connection
-
-        dispatcher.resume();
-        message.channel.send("I have resumed the stream.")
-    }
-})
+client.login(token);
