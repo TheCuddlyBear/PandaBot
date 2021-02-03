@@ -1,12 +1,20 @@
-const { bot_version } = require('../config.json');
+const { bot_version } = require('../../config.json');
 const minecraftUtil = require('minecraft-server-util');
 const Discord = require('discord.js');
+const { Command } = require('discord.js-commando')
 
-module.exports = {
-    id: "mcstatus",
-    aliases: ["mc"],
-    channels: "any",
-    exec: async (call) => {
+module.exports = class StatusCommand extends Command {
+    constructor(client){
+        super(client, {
+            name: 'minecraftstatus',
+            aliases: ['mcstatus', 'mc'],
+            group: 'minecraft',
+            memberName: 'minecraftstatus',
+            description: 'Gives them ilse memes',
+        })
+    }
+
+    async run(message){
         minecraftUtil.status('play.takato.eu', { port: 25565}) // Get status
                 .then((response) => {
                     const statusEmbed = new Discord.MessageEmbed() // Create embed with status
@@ -21,7 +29,8 @@ module.exports = {
                             { name: 'Max player', value: response.maxPlayers }
                         )
                         .setTimestamp();
-                    call.message.channel.send(statusEmbed); // send message
+                    message.channel.send(statusEmbed); // send message
+                    message.delete();
                 })
                 .catch((error) => { // catch errors
                     throw error;

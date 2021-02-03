@@ -1,52 +1,70 @@
 // Require Hypixel Api wrapper
-const { hypixel_api, bot_version } = require('../config.json'); 
+const { hypixel_api, bot_version } = require('../../config.json'); 
 const Hypixel = require('hypixel-api-reborn');
 const hypixel = new Hypixel.Client(hypixel_api)
 
 const discord = require('discord.js')
+const { Command } = require('discord.js-commando')
 
-module.exports = {
-    id: "hypixel",
-    aliases: ["hp", "hyp", "pixel"],
-    channels: "any",
-    exec: (call) => {
-        if(call.args.length == 0){
-            call.message.channel.send("You need to provide a player name!").then(msg => {
-                msg.delete({ timeout: 10000 })
-            })
-        }if (call.args.length == 2){ // checks which stats user wants
-            switch(call.args[1]){
+module.exports = class HypixelCommand extends Command {
+    constructor(client){
+        super(client, {
+            name: 'hypixel',
+            aliases: ['hp'],
+            group: 'minecraft',
+            memberName: 'hypixel',
+            description: 'Gives your Hypixel stats',
+            args: [
+                {
+                    key: 'playername',
+                    prompt: 'What playlist would you like me to play?',
+                    type: 'string',
+                },
+                {
+                    key: 'stattype',
+                    prompt: 'What playlist would you like me to play?',
+                    type: 'string',
+                    default: 'player'
+                },
+            ],
+            argsPromptLimit: 0
+        })
+    }
+
+    run(message, { playername, stattype }){
+        if (stattype !== 'player'){ // checks which stats user wants
+            switch(stattype){
                 case 'skywars':
-                    getSkywarsStats(call.args[0], call.message)
-                    call.message.delete();
+                    getSkywarsStats(playername, message)
+                    message.delete();
                     break;
                 case 'bedwars':
-                    getBedwarsStats(call.args[0], call.message)
-                    call.message.delete();
+                    getBedwarsStats(playername, message)
+                    message.delete();
                     break;
                 case 'murdermystery':
-                    getMurderStats(call.args[0], call.message)
-                    call.message.delete();
+                    getMurderStats(playername, message)
+                    message.delete();
                     break;
                 case 'buildbattle':
-                    getBuildStats(call.args[0], call.message)
-                    call.message.delete();
+                    getBuildStats(playername, message)
+                    message.delete();
                     break;
                 case 'skyblock':
-                    call.message.channel.send("You can view your skyblock stats here: https://sky.shiiyu.moe/stats/" + call.args[0])
-                    call.message.delete();
+                    message.channel.send("You can view your skyblock stats here: https://sky.shiiyu.moe/stats/" + playername)
+                    message.delete();
                     break;
                 case 'vampirez':
-                    getVampireStats(call.args[0], call.message)
-                    call.message.delete();
+                    getVampireStats(playername, message)
+                    message.delete();
                     break;
                 case 'guild':
-                    getGuildStats(call.args[0], call.message)
-                    call.message.delete();
+                    getGuildStats(playername, message)
+                    message.delete();
                     break;
             }
         }else {
-            hypixel.getPlayer(call.args[0]).then(player => {
+            hypixel.getPlayer(playername).then(player => {
                 if(player.nickname.endsWith('s')){
                     var suffix = "'"
                 }else {
@@ -67,8 +85,8 @@ module.exports = {
                         { name: 'Last login', value: player.lastLogin, inline: true },
                         { name: 'Last played game', value: player.recentlyPlayedGame.toString()}
                     )
-                call.message.channel.send(statEmbed);
-                call.message.delete();
+                message.channel.send(statEmbed);
+                message.delete();
             }).catch(e => {
                 console.log(e)
             })
