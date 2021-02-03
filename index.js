@@ -18,6 +18,7 @@ client.registry
 	.registerDefaultTypes()
 	.registerGroups([
 		['general', 'General commands'],
+		['moderation', 'Commands for moderating the server']
         ['music', 'Music commands'],
         ['minecraft', 'Minecraft commands']
 	])
