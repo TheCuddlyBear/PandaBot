@@ -1,5 +1,5 @@
 // Require Hypixel Api wrapper
-const { hypixel_api, bot_version } = require('../../config.json'); 
+const { hypixel_api, bot_version } = require('../../config.json');
 const Hypixel = require('hypixel-api-reborn');
 const hypixel = new Hypixel.Client(hypixel_api)
 
@@ -7,15 +7,14 @@ const discord = require('discord.js')
 const { Command } = require('discord.js-commando')
 
 module.exports = class HypixelCommand extends Command {
-    constructor(client){
+    constructor(client) {
         super(client, {
             name: 'hypixel',
             aliases: ['hp'],
             group: 'minecraft',
             memberName: 'hypixel',
             description: 'Gives your Hypixel stats',
-            args: [
-                {
+            args: [{
                     key: 'playername',
                     prompt: 'What playlist would you like me to play?',
                     type: 'string',
@@ -31,9 +30,9 @@ module.exports = class HypixelCommand extends Command {
         })
     }
 
-    run(message, { playername, stattype }){
-        if (stattype !== 'player'){ // checks which stats user wants
-            switch(stattype){
+    run(message, { playername, stattype }) {
+        if (stattype !== 'player') { // checks which stats user wants
+            switch (stattype) {
                 case 'skywars':
                     getSkywarsStats(playername, message)
                     message.delete();
@@ -63,11 +62,11 @@ module.exports = class HypixelCommand extends Command {
                     message.delete();
                     break;
             }
-        }else {
+        } else {
             hypixel.getPlayer(playername).then(player => {
-                if(player.nickname.endsWith('s')){
+                if (player.nickname.endsWith('s')) {
                     var suffix = "'"
-                }else {
+                } else {
                     var suffix = "'s"
                 }
 
@@ -77,14 +76,30 @@ module.exports = class HypixelCommand extends Command {
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
                     .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
-                    .addFields(
-                        { name: 'Rank', value: player.rank, inline: true },
-                        { name: 'Karma', value: player.karma, inline: true },
-                        { name: 'Level', value: player.level, inline: true },
-                        { name: 'First login', value: player.firstLogin, inline: true },
-                        { name: 'Last login', value: player.lastLogin, inline: true },
-                        { name: 'Last played game', value: player.recentlyPlayedGame.toString()}
-                    )
+                    .addFields({
+                        name: 'Rank',
+                        value: player.rank,
+                        inline: true
+                    }, {
+                        name: 'Karma',
+                        value: player.karma,
+                        inline: true
+                    }, {
+                        name: 'Level',
+                        value: player.level,
+                        inline: true
+                    }, {
+                        name: 'First login',
+                        value: player.firstLogin,
+                        inline: true
+                    }, {
+                        name: 'Last login',
+                        value: player.lastLogin,
+                        inline: true
+                    }, {
+                        name: 'Last played game',
+                        value: player.recentlyPlayedGame.toString()
+                    })
                 message.channel.send(statEmbed);
                 message.delete();
             }).catch(e => {
@@ -92,11 +107,11 @@ module.exports = class HypixelCommand extends Command {
             })
         }
 
-        function getSkywarsStats(player, message){
+        function getSkywarsStats(player, message) {
             hypixel.getPlayer(player).then(player => { // requests api for the player object
-                if(player.nickname.endsWith('s')){
+                if (player.nickname.endsWith('s')) {
                     var suffix = "'"
-                }else {
+                } else {
                     var suffix = "'s"
                 }
 
@@ -106,26 +121,46 @@ module.exports = class HypixelCommand extends Command {
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
                     .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
-                    .addFields(
-                        { name: 'Coins', value: player.stats.skywars.coins, inline: true },
-                        { name: 'Souls', value: player.stats.skywars.souls, inline: true },
-                        { name: 'Level', value: player.stats.skywars.level, inline: true },
-                        { name: 'Wins', value: player.stats.skywars.wins, inline: true },
-                        { name: 'Losses', value: player.stats.skywars.losses, inline: true },
-                        { name: 'Kills', value: player.stats.skywars.kills, inline: true },
-                        { name: 'K/D ration', value: player.stats.skywars.KDRatio, inline: true},
-                    )
+                    .addFields({
+                        name: 'Coins',
+                        value: player.stats.skywars.coins,
+                        inline: true
+                    }, {
+                        name: 'Souls',
+                        value: player.stats.skywars.souls,
+                        inline: true
+                    }, {
+                        name: 'Level',
+                        value: player.stats.skywars.level,
+                        inline: true
+                    }, {
+                        name: 'Wins',
+                        value: player.stats.skywars.wins,
+                        inline: true
+                    }, {
+                        name: 'Losses',
+                        value: player.stats.skywars.losses,
+                        inline: true
+                    }, {
+                        name: 'Kills',
+                        value: player.stats.skywars.kills,
+                        inline: true
+                    }, {
+                        name: 'K/D ration',
+                        value: player.stats.skywars.KDRatio,
+                        inline: true
+                    }, )
                 message.channel.send(statEmbed);
             }).catch(e => {
                 console.log(e)
             })
         }
 
-        function getMurderStats(player, message){
+        function getMurderStats(player, message) {
             hypixel.getPlayer(player).then(player => {
-                if(player.nickname.endsWith('s')){
+                if (player.nickname.endsWith('s')) {
                     var suffix = "'"
-                }else {
+                } else {
                     var suffix = "'s"
                 }
 
@@ -135,26 +170,46 @@ module.exports = class HypixelCommand extends Command {
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
                     .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
-                    .addFields(
-                        { name: 'Coins', value: player.stats.murdermystery.coins, inline: true },
-                        { name: 'Murderer Wins', value: player.stats.murdermystery.winsAsMurderer, inline: true },
-                        { name: 'Detective Wins', value: player.stats.murdermystery.winsAsDetective, inline: true },
-                        { name: 'Wins', value: player.stats.murdermystery.wins, inline: true },
-                        { name: 'Kills', value: player.stats.murdermystery.kills, inline: true },
-                        { name: 'Deaths', value: player.stats.murdermystery.deaths, inline: true },
-                        { name: 'K/D ratio', value: player.stats.murdermystery.KDRatio, inline: true},
-                    )
+                    .addFields({
+                        name: 'Coins',
+                        value: player.stats.murdermystery.coins,
+                        inline: true
+                    }, {
+                        name: 'Murderer Wins',
+                        value: player.stats.murdermystery.winsAsMurderer,
+                        inline: true
+                    }, {
+                        name: 'Detective Wins',
+                        value: player.stats.murdermystery.winsAsDetective,
+                        inline: true
+                    }, {
+                        name: 'Wins',
+                        value: player.stats.murdermystery.wins,
+                        inline: true
+                    }, {
+                        name: 'Kills',
+                        value: player.stats.murdermystery.kills,
+                        inline: true
+                    }, {
+                        name: 'Deaths',
+                        value: player.stats.murdermystery.deaths,
+                        inline: true
+                    }, {
+                        name: 'K/D ratio',
+                        value: player.stats.murdermystery.KDRatio,
+                        inline: true
+                    }, )
                 message.channel.send(statEmbed);
             }).catch(e => {
                 console.log(e)
             })
         }
 
-        function getBedwarsStats(player, message){
+        function getBedwarsStats(player, message) {
             hypixel.getPlayer(player).then(player => {
-                if(player.nickname.endsWith('s')){
+                if (player.nickname.endsWith('s')) {
                     var suffix = "'"
-                }else {
+                } else {
                     var suffix = "'s"
                 }
 
@@ -164,27 +219,50 @@ module.exports = class HypixelCommand extends Command {
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
                     .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
-                    .addFields(
-                        { name: 'Coins', value: player.stats.bedwars.coins, inline: true },
-                        { name: 'Level', value: player.stats.bedwars.level, inline: true },
-                        { name: 'Wins', value: player.stats.bedwars.wins, inline: true },
-                        { name: 'Losses', value: player.stats.bedwars.losses, inline: true },
-                        { name: 'Deaths', value: player.stats.bedwars.deaths, inline: true },
-                        { name: 'Final Deaths', value: player.stats.bedwars.finalDeaths, inline: true },
-                        { name: 'Kills', value: player.stats.bedwars.kills, inline: true },
-                        { name: 'K/D ration', value: player.stats.skywars.KDRatio, inline: true},
-                    )
+                    .addFields({
+                        name: 'Coins',
+                        value: player.stats.bedwars.coins,
+                        inline: true
+                    }, {
+                        name: 'Level',
+                        value: player.stats.bedwars.level,
+                        inline: true
+                    }, {
+                        name: 'Wins',
+                        value: player.stats.bedwars.wins,
+                        inline: true
+                    }, {
+                        name: 'Losses',
+                        value: player.stats.bedwars.losses,
+                        inline: true
+                    }, {
+                        name: 'Deaths',
+                        value: player.stats.bedwars.deaths,
+                        inline: true
+                    }, {
+                        name: 'Final Deaths',
+                        value: player.stats.bedwars.finalDeaths,
+                        inline: true
+                    }, {
+                        name: 'Kills',
+                        value: player.stats.bedwars.kills,
+                        inline: true
+                    }, {
+                        name: 'K/D ration',
+                        value: player.stats.skywars.KDRatio,
+                        inline: true
+                    }, )
                 message.channel.send(statEmbed);
             }).catch(e => {
                 console.log(e)
             })
         }
 
-        function getBuildStats(player, message){
+        function getBuildStats(player, message) {
             hypixel.getPlayer(player).then(player => {
-                if(player.nickname.endsWith('s')){
+                if (player.nickname.endsWith('s')) {
                     var suffix = "'"
-                }else {
+                } else {
                     var suffix = "'s"
                 }
 
@@ -194,27 +272,50 @@ module.exports = class HypixelCommand extends Command {
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
                     .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
-                    .addFields(
-                        { name: 'Score', value: player.stats.buildbattle.score, inline: true },
-                        { name: 'Played Games', value: player.stats.buildbattle.playedGames, inline: true },
-                        { name: 'Coins', value: player.stats.buildbattle.coins, inline: true },
-                        { name: 'Total wins', value: player.stats.buildbattle.totalWins, inline: true },
-                        { name: 'Solo wins', value: player.stats.buildbattle.wins.solo, inline: true },
-                        { name: 'Team wins', value: player.stats.buildbattle.wins.team, inline: true },
-                        { name: 'Pro wins', value: player.stats.buildbattle.wins.pro, inline: true },
-                        { name: 'GTB Wins', value: player.stats.buildbattle.wins.gtb, inline: true},
-                    )
+                    .addFields({
+                        name: 'Score',
+                        value: player.stats.buildbattle.score,
+                        inline: true
+                    }, {
+                        name: 'Played Games',
+                        value: player.stats.buildbattle.playedGames,
+                        inline: true
+                    }, {
+                        name: 'Coins',
+                        value: player.stats.buildbattle.coins,
+                        inline: true
+                    }, {
+                        name: 'Total wins',
+                        value: player.stats.buildbattle.totalWins,
+                        inline: true
+                    }, {
+                        name: 'Solo wins',
+                        value: player.stats.buildbattle.wins.solo,
+                        inline: true
+                    }, {
+                        name: 'Team wins',
+                        value: player.stats.buildbattle.wins.team,
+                        inline: true
+                    }, {
+                        name: 'Pro wins',
+                        value: player.stats.buildbattle.wins.pro,
+                        inline: true
+                    }, {
+                        name: 'GTB Wins',
+                        value: player.stats.buildbattle.wins.gtb,
+                        inline: true
+                    }, )
                 message.channel.send(statEmbed);
             }).catch(e => {
                 console.log(e)
             })
         }
 
-        function getVampireStats(player, message){
+        function getVampireStats(player, message) {
             hypixel.getPlayer(player).then(player => {
-                if(player.nickname.endsWith('s')){
+                if (player.nickname.endsWith('s')) {
                     var suffix = "'"
-                }else {
+                } else {
                     var suffix = "'s"
                 }
 
@@ -224,22 +325,30 @@ module.exports = class HypixelCommand extends Command {
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
                     .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
-                    .addFields(
-                        { name: 'Human', value: `Kills: ${player.stats.vampirez.human.kills} \n Deaths: ${player.stats.vampirez.human.deaths} \n K/D Ratio: ${player.stats.vampirez.human.KDRatio} \n Wins: ${player.stats.vampirez.human.wins}`, inline: true },
-                        { name: 'Vampire', value: `Kills: ${player.stats.vampirez.vampire.kills} \n Deaths: ${player.stats.vampirez.vampire.deaths} \n K/D Ratio: ${player.stats.vampirez.vampire.KDRatio}`, inline: true },
-                        { name: 'Zombie', value: `Kills: ${player.stats.vampirez.vampire.kills}`, inline: true },
-                    )
+                    .addFields({
+                        name: 'Human',
+                        value: `Kills: ${player.stats.vampirez.human.kills} \n Deaths: ${player.stats.vampirez.human.deaths} \n K/D Ratio: ${player.stats.vampirez.human.KDRatio} \n Wins: ${player.stats.vampirez.human.wins}`,
+                        inline: true
+                    }, {
+                        name: 'Vampire',
+                        value: `Kills: ${player.stats.vampirez.vampire.kills} \n Deaths: ${player.stats.vampirez.vampire.deaths} \n K/D Ratio: ${player.stats.vampirez.vampire.KDRatio}`,
+                        inline: true
+                    }, {
+                        name: 'Zombie',
+                        value: `Kills: ${player.stats.vampirez.vampire.kills}`,
+                        inline: true
+                    }, )
                 message.channel.send(statEmbed);
             }).catch(e => {
                 console.log(e)
             })
         }
 
-        function getGuildStats(guildArg, message){
+        function getGuildStats(guildArg, message) {
             hypixel.getGuild('name', guildArg).then(guild => {
-                if(guild.name.endsWith('s')){
+                if (guild.name.endsWith('s')) {
                     var suffix = "'"
-                }else {
+                } else {
                     var suffix = "'s"
                 }
 
@@ -248,9 +357,11 @@ module.exports = class HypixelCommand extends Command {
                     .setTitle(guild.name + suffix + " stats")
                     .setTimestamp()
                     .setFooter(`Hypixel Stats • Panda Jr. v${bot_version}`)
-                    .addFields(
-                        { name: 'Level', value: guild.level, inline: true }
-                    )
+                    .addFields({
+                        name: 'Level',
+                        value: guild.level,
+                        inline: true
+                    })
                 message.channel.send(statEmbed);
             }).catch(e => {
                 console.log(e)
