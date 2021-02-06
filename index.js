@@ -3,6 +3,7 @@ const { token, prefix } = require('./config.json');
 const Discord = require('discord.js');
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
+global.bot_version = "2.0.2";
  
 let client = new CommandoClient({
     commandPrefix: prefix,

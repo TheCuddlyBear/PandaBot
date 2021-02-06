@@ -1,5 +1,5 @@
 // Require Hypixel Api wrapper
-const { hypixel_api, bot_version } = require('../../config.json');
+const { hypixel_api } = require('../../config.json');
 const Hypixel = require('hypixel-api-reborn');
 const hypixel = new Hypixel.Client(hypixel_api)
 

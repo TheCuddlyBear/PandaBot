@@ -1,4 +1,3 @@
-const { bot_version } = require('../../config.json');
 const minecraftUtil = require('minecraft-server-util');
 const Discord = require('discord.js');
 const { Command } = require('discord.js-commando')

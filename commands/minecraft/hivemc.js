@@ -1,6 +1,5 @@
 // HiveAPI
 const hive = require('hive-api');
-const { bot_version } = require('../../config.json')
 
 // Commando and discord
 const Discord = require('discord.js');
