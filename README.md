@@ -22,7 +22,6 @@ Here is an example config.json:
     "token": "<discord token>",
     "youtube_api": "<youtube data api>",
     "hypixel_api": "<hypixel api>",
-    "bot_version": "2.0.2",
     "mysqlhost": "<mysql host>",
     "mysqlport": "<mysql port>",
     "mysqluser": "<mysql username>",
@@ -30,8 +29,6 @@ Here is an example config.json:
     "mysqldb": "<mysql database>"
 }
 ```
-
-**Note** that it is not recommended to change the bot version, unless you're developing the bot for your own server.
 
 ### Developing and running the bot
 
