@@ -18,16 +18,16 @@ client.registry
 	.registerDefaultTypes()
 	.registerGroups([
 		['general', 'General commands'],
-		['moderation', 'Commands for moderating the server']
         ['music', 'Music commands'],
-        ['minecraft', 'Minecraft commands']
+		['minecraft', 'Minecraft commands'],
+		['fun', 'Fun commands']
 	])
 	.registerDefaultGroups()
 	.registerDefaultCommands()
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.once('ready', () => {
-    console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
+	console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
 });
     
 client.on('error', console.error);
