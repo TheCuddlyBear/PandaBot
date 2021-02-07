@@ -3,11 +3,13 @@
     "token": "<discord token>",
     "youtube_api": "<youtube data api>",
     "hypixel_api": "<hypixel api>",
-    "mysqlhost": "<mysql host>",
-    "mysqlport": "<mysql port>",
-    "mysqluser": "<mysql username>",
-    "mysqlpass": "<mysql password>",
-    "mysqldb": "<mysql database>",
+    "mysql": {
+        "host": "<mysql host>",
+        "port": "<mysql port>",
+        "username": "<mysql username>",
+        "password": "<mysql password>",
+        "database": "<mysql database>"
+    },
     "status": {
         "type": "<WATCHING, LISTENING, STREAING or PLAYING>",
         "text": "<text>",
