@@ -1,12 +1,12 @@
 // Bot essentials
-const { token, prefix, status } = require('./config.json');
+const config = require('./config.json');
 const Discord = require('discord.js');
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
 global.bot_version = "2.0.2";
  
 let client = new CommandoClient({
-    commandPrefix: prefix,
+    commandPrefix: config.prefix,
     owner: "206879635059900417",
     invite: 'https://discord.gg/bRCvFy9',
 })
@@ -30,18 +30,22 @@ client.registry
 
 client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
-	if(status.type === "STREAMING"){
-		client.user.setActivity(status.text, {
-			type: status.type,
-			url: status.url
-		})
-	}else {
-		client.user.setActivity(status.text, {
-			type: status.type
-		})
+	client.user.setUsername(config.user.name);
+	client.user.setAvatar(config.user.avatar)
+	if(config.status.enabled){
+		if(config.status.type === "STREAMING"){
+			client.user.setActivity(config.status.text, {
+				type: config.status.type,
+				url: config.status.url
+			});
+		}else {
+			client.user.setActivity(config.status.text, {
+				type: config.status.type
+			});
+		}
 	}
 });
     
 client.on('error', console.error);
  
-client.login(token);
+client.login(config.token);
