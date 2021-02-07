@@ -3,9 +3,9 @@
     "token": "<discord token>",
     "youtube_api": "<youtube data api>",
     "hypixel_api": "<hypixel api>",
-    "nickname": {
-        "enabled": <true/false>,
-        "name": "<nickname>"
+    "user": {
+        "name": "<bot username>",
+        "avatar": "<bot avatar>"
     },
     "mysql": {
         "host": "<mysql host>",
@@ -15,6 +15,7 @@
         "database": "<mysql database>"
     },
     "status": {
+        "enabled": false,
         "type": "<WATCHING, LISTENING, STREAING or PLAYING>",
         "text": "<text>",
         "url": "<only for streaming activity"
