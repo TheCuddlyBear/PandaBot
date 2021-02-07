@@ -1,5 +1,6 @@
 // HiveAPI
 const hive = require('hive-api');
+const { version } = require('./package.json')
 
 // Commando and discord
 const Discord = require('discord.js');
@@ -39,7 +40,7 @@ module.exports = class HiveCommand extends Command {
                 .setTitle(playername + suffix + " HiveMC stats")
                 .setThumbnail('https://minotar.net/avatar/' + playername)
                 .setTimestamp()
-                .setFooter(`HiveMC Stats • Panda Jr. v${bot_version}`)
+                .setFooter(`HiveMC Stats • Panda Jr. v${version}`)
                 .addFields({
                     name: 'Rank',
                     value: info.rank.humanName,
