@@ -1,5 +1,5 @@
 // Bot essentials
-const { token, prefix } = require('./config.json');
+const { token, prefix, status } = require('./config.json');
 const Discord = require('discord.js');
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
@@ -30,6 +30,16 @@ client.registry
 
 client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
+	if(status.type === "STREAMING"){
+		client.user.setActivity(status.text, {
+			type: status.type,
+			url: status.url
+		})
+	}else {
+		client.user.setActivity(status.text, {
+			type: status.type
+		})
+	}
 });
     
 client.on('error', console.error);
