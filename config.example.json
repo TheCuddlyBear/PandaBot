@@ -1,0 +1,11 @@
+{
+    "prefix": "!!",
+    "token": "<discord token>",
+    "youtube_api": "<youtube data api>",
+    "hypixel_api": "<hypixel api>",
+    "mysqlhost": "<mysql host>",
+    "mysqlport": "<mysql port>",
+    "mysqluser": "<mysql username>",
+    "mysqlpass": "<mysql password>",
+    "mysqldb": "<mysql database>"
+}
