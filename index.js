@@ -21,7 +21,8 @@ client.registry
 		['general', 'General commands'],
         ['music', 'Music commands'],
 		['minecraft', 'Minecraft commands'],
-		['fun', 'Fun commands']
+		['fun', 'Fun commands'],
+		['moderation', 'Mod commands']
 	])
 	.registerDefaultGroups()
 	.registerDefaultCommands()
