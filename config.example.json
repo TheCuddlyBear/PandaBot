@@ -3,6 +3,10 @@
     "token": "<discord token>",
     "youtube_api": "<youtube data api>",
     "hypixel_api": "<hypixel api>",
+    "nickname": {
+        "enabled": <true/false>,
+        "name": "<nickname>"
+    },
     "mysql": {
         "host": "<mysql host>",
         "port": "<mysql port>",
