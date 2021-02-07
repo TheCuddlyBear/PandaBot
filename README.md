@@ -26,7 +26,12 @@ Here is an example config.json:
     "mysqlport": "<mysql port>",
     "mysqluser": "<mysql username>",
     "mysqlpass": "<mysql password>",
-    "mysqldb": "<mysql database>"
+    "mysqldb": "<mysql database>",
+    "status": {
+        "type": "<WATCHING, LISTENING, STREAING or PLAYING>",
+        "text": "<text>",
+        "url": "<only for streaming activity"
+    }
 }
 ```
 
