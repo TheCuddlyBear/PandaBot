@@ -22,12 +22,19 @@ Here is an example config.json:
     "token": "<discord token>",
     "youtube_api": "<youtube data api>",
     "hypixel_api": "<hypixel api>",
-    "mysqlhost": "<mysql host>",
-    "mysqlport": "<mysql port>",
-    "mysqluser": "<mysql username>",
-    "mysqlpass": "<mysql password>",
-    "mysqldb": "<mysql database>",
+    "user": {
+        "name": "<bot username>",
+        "avatar": "<bot avatar>"
+    },
+    "mysql": {
+        "host": "<mysql host>",
+        "port": "<mysql port>",
+        "username": "<mysql username>",
+        "password": "<mysql password>",
+        "database": "<mysql database>"
+    },
     "status": {
+        "enabled": false,
         "type": "<WATCHING, LISTENING, STREAING or PLAYING>",
         "text": "<text>",
         "url": "<only for streaming activity"
