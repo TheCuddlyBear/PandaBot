@@ -2,7 +2,7 @@
 const { hypixel_api } = require('../../config.json');
 const Hypixel = require('hypixel-api-reborn');
 const hypixel = new Hypixel.Client(hypixel_api)
-const { version } = require('./package.json')
+const { version } = require('../../package.json')
 
 const discord = require('discord.js')
 const { Command } = require('discord.js-commando')

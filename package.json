@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheCuddlyBear/DiscordBot.git"
+    "url": "git+https://github.com/TheCuddlyBear/PandaBot.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "TheCuddlyBear",
+  "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/TheCuddlyBear/DiscordBot/issues"
+    "url": "https://github.com/TheCuddlyBear/PandaBot/issues"
   },
-  "homepage": "https://github.com/TheCuddlyBear/DiscordBot#readme",
+  "homepage": "https://github.com/TheCuddlyBear/PandaBot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.3.3",
     "d.js-command-handler": "^2.0.2",

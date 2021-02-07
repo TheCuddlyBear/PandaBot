@@ -1,7 +1,7 @@
 const minecraftUtil = require('minecraft-server-util');
 const Discord = require('discord.js');
 const { Command } = require('discord.js-commando')
-const { version } = require('./package.json')
+const { version } = require('../../package.json')
 
 module.exports = class StatusCommand extends Command {
     constructor(client){
