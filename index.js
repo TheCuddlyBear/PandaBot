@@ -1,5 +1,6 @@
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('discord-akairo');
 const config = require('./config.json');
+const Discord = require('discord.js')
 
 class PandaClient extends AkairoClient {
 	constructor() {
@@ -30,4 +31,8 @@ class PandaClient extends AkairoClient {
 }
 
 const client = new PandaClient();
+
+// music queue
+client.queue = new Discord.Collection();
+
 client.login(config.token);
