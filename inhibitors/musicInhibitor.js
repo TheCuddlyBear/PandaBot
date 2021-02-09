@@ -1,4 +1,4 @@
-const { Listener } = require('discord-akairo');
+const { Inhibitor } = require("discord-akairo");
 
 // Youtube
 const { youtube_api } = require('../config.json')
@@ -6,21 +6,19 @@ const YoutubeAPI = require('discord-youtube-api');
 const searcher = new YoutubeAPI(youtube_api);
 const ytdl = require('ytdl-core');
 
-class MusicListener extends Listener {
-    constructor() {
+
+class MusicInhibitor extends Inhibitor {
+    constructor(){
         super('music', {
-            emitter: 'client',
-            event: 'message'
-        });
+            type: 'all'
+        })
     }
 
     async exec(message) {
-        if(message.channel.id === "691568672032161823"){
+        if(message.member.id === this.client.user.id){
             return
-        }else if(message.member.id === this.client.user.id){
-            return
-        }else {
-            const serverQueue = this.client.queue;
+        }else if(message.channel.id === "691568672032161823"){
+            const serverQueue = this.client.queue.get(message.guild.id);
             const client = this.client;
             let vc = message.member.voice.channel;
 
@@ -82,9 +80,10 @@ class MusicListener extends Listener {
                         msg.delete({ timeout: 10000 })
                     })
             }
+        }else{
+            return
         }
     }
-        
 }
 
-module.exports = MusicListener;
+module.exports = MusicInhibitor;
