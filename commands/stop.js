@@ -5,6 +5,7 @@ class StopCommand extends Command {
         super('stop', {
             aliases: ['stop'],
             category: "music",
+            description: "Stops playing music and deletes the current queue"
         })
     }
 

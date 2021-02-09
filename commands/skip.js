@@ -5,6 +5,7 @@ class SkipCommand extends Command {
         super('skip', {
             aliases: ['skip'],
             category: "music",
+            description: "Skips the currently playing song."
         })
     }
 

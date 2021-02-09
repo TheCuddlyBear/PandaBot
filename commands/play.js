@@ -12,6 +12,11 @@ class PlayCommand extends Command {
         super('play', {
             aliases: ['play', 'p'],
             category: "music",
+            description: {
+                content: "Plays the song you've given",
+                usage: '[song]',
+				examples: ['Blank space', 'Murder song']
+            },
             args: [
                 {
                     id: 'song',

@@ -10,7 +10,8 @@ class PandaClient extends AkairoClient {
 
 		this.commandHandler = new CommandHandler(this, {
 			directory: './commands/',
-			prefix: config.prefix
+			prefix: config.prefix,
+			commandUtil: true
 		})
 
 		this.inhibitorHandler = new InhibitorHandler(this, {
