@@ -15,6 +15,7 @@ class MusicInhibitor extends Inhibitor {
     }
 
     async exec(message) {
+        /*
         if(message.member.id === this.client.user.id){
             return
         }else if(message.channel.id === "691568672032161823"){
@@ -83,6 +84,7 @@ class MusicInhibitor extends Inhibitor {
         }else{
             return
         }
+        */
     }
 }
 
