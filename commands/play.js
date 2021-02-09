@@ -11,10 +11,11 @@ class PlayCommand extends Command {
     constructor(){
         super('play', {
             aliases: ['play', 'p'],
+            category: "music",
             args: [
                 {
                     id: 'song',
-                    match: 'text'
+                    match: 'text',
                 }
             ]
         })

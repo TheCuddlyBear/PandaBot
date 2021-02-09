@@ -3,7 +3,8 @@ const { Command } = require('discord-akairo');
 class SkipCommand extends Command {
     constructor(){
         super('skip', {
-            aliases: ['skip']
+            aliases: ['skip'],
+            category: "music",
         })
     }
 
