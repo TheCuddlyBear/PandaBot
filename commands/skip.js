@@ -8,7 +8,7 @@ class SkipCommand extends Command {
     }
 
     exec(message){
-        const serverQueue = this.client.queue.get(call.message.guild.id);
+        const serverQueue = this.client.queue.get(message.guild.id);
 
         if(!message.member.voice.channel)// check if user is in voice channel
             return message.channel.send("You need to join the voice chat first").then(msg => {

@@ -25,3 +25,5 @@ class StopCommand extends Command {
         serverQueue.connection.dispatcher.end();
     }
 }
+
+module.exports = StopCommand;
