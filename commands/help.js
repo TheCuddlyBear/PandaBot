@@ -69,10 +69,11 @@ class HelpCommand extends Command {
 			const title = {
 				general: '📝\u2000General',
 				music: '🎵\u2000Music',
+				utility: ':briefcase:\u2000Utility',
                 minecraft: '🧱\u2000Minecraft'
 			}[category.id];
 
-			if (title) embed.addField(title, `\`${category.map(cmd => cmd.aliases[0]).join('` `')}\``);
+			if (title) embed.addField(title, `\`${category.map(cmd => cmd.aliases[0]).join('` `')}\``, true);
 		}
 
 		const shouldReply = message.guild && message.channel.permissionsFor(this.client.user).has('SEND_MESSAGES');
