@@ -58,7 +58,7 @@ class HelpCommand extends Command {
 
 	async execCommandList(message) {
 		const embed = this.client.util.embed()
-			.setColor(0xFFAC33)
+			.setColor('#FF0033')
 			.addField('Command List',
 				[
 					'This is a list of commands.',
