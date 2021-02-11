@@ -1,9 +1,13 @@
-const {Listener} = require('discord-akairo');
+const { Listener } = require("discord-akairo");
 
 class ErrorListener extends Listener {
-  constructor() { super('error', {emitter : 'client', event : 'error'}) }
+  constructor() {
+    super("error", { emitter: "client", event: "error" });
+  }
 
-  exec() { console.error; }
+  exec() {
+    console.error;
+  }
 }
 
 module.exports = ErrorListener;
