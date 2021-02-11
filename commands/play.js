@@ -1,44 +1,44 @@
+const { Command } = require('discord-akairo');
+
 // Youtube
-const { youtube_api } = require('../../config.json')
+const { youtube_api } = require('../config.json')
 const YoutubeAPI = require('discord-youtube-api');
 const searcher = new YoutubeAPI(youtube_api);
 const ytdl = require('ytdl-core');
 
-// discordjs commando
-const { Command } = require('discord.js-commando');
 
-module.exports = class PlayCommand extends Command {
-    constructor(client){
-        super(client, {
-            name: 'play',
-            aliases: ['p'],
-            group: 'music',
-            memberName: 'play',
-            description: 'Plays the song given',
+class PlayCommand extends Command {
+    constructor(){
+        super('play', {
+            aliases: ['play', 'p'],
+            category: "music",
+            description: {
+                content: "Plays the song you've given",
+                usage: '[song]',
+				examples: ['Blank space', 'Murder song']
+            },
             args: [
                 {
-                    key: 'song',
-                    prompt: 'What song would you like me to play?',
-                    type: 'string',
-                },
-            ],
-            argsPromptLimit: 0
+                    id: 'song',
+                    match: 'text',
+                }
+            ]
         })
     }
 
-    async run(message, { song }){
-        const serverQueue = this.client.queue.get(message.guild.id)
-        const client = this.client
+    async exec(message, args){
+        const serverQueue = this.client.queue.get(message.guild.id);
+        const client = this.client;
 
-        let vc = message.member.voice.channel
+        let vc = message.member.voice.channel;
 
         if(!vc){
             message.delete();
-            return message.channel.send("Please join a voice chat first!").then(msg => {
-                msg.delete({ timeout: 10000 })
+            return message.channel.send("You have to join a voice channel before you can use this command!").then(msg => {
+                msg.delete({ timeout: 10000 });
             })
-        }else {
-            const songSearch = await searcher.searchVideos(song)
+        }else{
+            const songSearch = await searcher.searchVideos(args.song);
 
             if(!serverQueue){
                 const queueConstructor = { // constructor for the server queue
@@ -49,7 +49,7 @@ module.exports = class PlayCommand extends Command {
                     volume: 0.1,
                     playing: true
                 };
-                client.queue.set(message.guild.id, queueConstructor)
+                client.queue.set(message.guild.id, queueConstructor);
 
                 queueConstructor.songs.push(songSearch);
 
@@ -66,7 +66,7 @@ module.exports = class PlayCommand extends Command {
             }else {
                 serverQueue.songs.push(songSearch);
                 message.delete();
-                return message.channel.send("I've added the song to the queue ```" + ` ${song.title}` + "```").then(msg => {
+                return message.channel.send("I've added the song to the queue ```" + ` ${songSearch.title}` + "```").then(msg => {
                     msg.delete({ timeout: 10000 })
                 })
             }
@@ -93,3 +93,5 @@ module.exports = class PlayCommand extends Command {
 
     }
 }
+
+module.exports = PlayCommand;

@@ -1,17 +1,15 @@
-const { Command } = require('discord.js-commando');
+const { Command } = require("discord-akairo");
 
-module.exports = class StopCommand extends Command {
-    constructor(client){
-        super(client, {
-            name: 'halt',
+class StopCommand extends Command {
+    constructor(){
+        super('stop', {
             aliases: ['stop'],
-            group: 'music',
-            memberName: 'halt',
-            description: 'Stops the current playing song',
+            category: "music",
+            description: "Stops playing music and deletes the current queue"
         })
     }
 
-    run(message){
+    exec(message){
         const serverQueue = this.client.queue.get(message.guild.id)
 
         if(!message.member.voice.channel)
@@ -27,6 +25,7 @@ module.exports = class StopCommand extends Command {
         })
         serverQueue.songs = []
         serverQueue.connection.dispatcher.end();
-        
     }
 }
+
+module.exports = StopCommand;

@@ -1,33 +1,30 @@
 // HiveAPI
 const hive = require('hive-api');
-const { version } = require('../../package.json')
-
-// Commando and discord
+const { version } = require('../package.json');
 const Discord = require('discord.js');
-const { Command } = require('discord.js-commando')
 
-module.exports = class HiveCommand extends Command {
-    constructor(client) {
-        super(client, {
-            name: 'hivemc',
-            aliases: ['hive', 'hmc'],
-            group: 'minecraft',
-            memberName: 'hivemc',
-            description: 'Gives your HiveMC stats',
+const { Command } = require('discord-akairo');
+
+class HiveCommand extends Command {
+    constructor(){
+        super('hive', {
+            aliases: ['hivemc', 'hmc'],
+            category: 'minecraft',
+            description: {
+                content: "Get's your hive stats",
+                usage: '<player name>',
+                examples: ['TheCuddlyBear', 'TheDevilsRoses', 'MagixSpellz']
+            },
             args: [{
-                key: 'playername',
-                prompt: 'What playlist would you like me to play?',
-                type: 'string',
-            }, ],
-            argsPromptLimit: 0
+                id: 'playername',
+            }]
         })
     }
 
-    run(message, { playername }) {
+    exec(message, { playername }){
         let player = new hive.Player(playername);
 
         player.info().then(info => {
-            console.log(info)
 
             if (playername.endsWith('s')) {
                 var suffix = "'"
@@ -76,3 +73,5 @@ module.exports = class HiveCommand extends Command {
         })
     }
 }
+
+module.exports = HiveCommand;

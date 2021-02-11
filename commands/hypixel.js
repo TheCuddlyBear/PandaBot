@@ -1,37 +1,33 @@
+const { Command } = require('discord-akairo');
+const discord = require('discord.js');
+
 // Require Hypixel Api wrapper
-const { hypixel_api } = require('../../config.json');
+const { hypixel_api } = require('../config.json');
 const Hypixel = require('hypixel-api-reborn');
-const hypixel = new Hypixel.Client(hypixel_api)
-const { version } = require('../../package.json')
+const hypixel = new Hypixel.Client(hypixel_api);
+const { version } = require('../package.json');
 
-const discord = require('discord.js')
-const { Command } = require('discord.js-commando')
 
-module.exports = class HypixelCommand extends Command {
-    constructor(client) {
-        super(client, {
-            name: 'hypixel',
-            aliases: ['hp'],
-            group: 'minecraft',
-            memberName: 'hypixel',
-            description: 'Gives your Hypixel stats',
+class HypixelCommand extends Command {
+    constructor(){
+        super('hypixel', {
+            aliases: ['hypixel', 'hp', 'hyp'],
+            category: 'minecraft',
+            description: {
+                content: "Get's your hypixel stats from various games.",
+                usage: '<player name> [game]',
+                examples: ['TheCuddlyBear', 'TheDevilsRoses bedwars', 'MagixSpellz murdermystery']
+            },
             args: [{
-                    key: 'playername',
-                    prompt: 'What playlist would you like me to play?',
-                    type: 'string',
-                },
-                {
-                    key: 'stattype',
-                    prompt: 'What playlist would you like me to play?',
-                    type: 'string',
-                    default: 'player'
-                },
-            ],
-            argsPromptLimit: 0
+                id: 'playername',
+            }, {
+                id: 'stattype',
+                default: 'player'
+            }]
         })
     }
 
-    run(message, { playername, stattype }) {
+    exec(message, { stattype, playername }){
         if (stattype !== 'player') { // checks which stats user wants
             switch (stattype) {
                 case 'skywars':
@@ -370,3 +366,5 @@ module.exports = class HypixelCommand extends Command {
         }
     }
 }
+
+module.exports = HypixelCommand;

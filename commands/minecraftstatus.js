@@ -1,20 +1,20 @@
 const minecraftUtil = require('minecraft-server-util');
 const Discord = require('discord.js');
-const { Command } = require('discord.js-commando')
-const { version } = require('../../package.json')
+const { Command } = require('discord-akairo')
+const { version } = require('../package.json');
 
-module.exports = class StatusCommand extends Command {
-    constructor(client){
-        super(client, {
-            name: 'minecraftstatus',
+class MinecraftStatusCommand extends Command {
+    constructor(){
+        super('minecraftstatus', {
             aliases: ['mcstatus', 'mc'],
-            group: 'minecraft',
-            memberName: 'minecraftstatus',
-            description: 'Gives them ilse memes',
-        })
+            category: 'minecraft',
+			description: {
+				content: 'Displays the server status of the Roses Minecraft Server',
+			}
+        });
     }
 
-    async run(message){
+    async exec(message){
         minecraftUtil.status('play.takato.eu', { port: 25565}) // Get status
                 .then((response) => {
                     const statusEmbed = new Discord.MessageEmbed() // Create embed with status
@@ -37,3 +37,5 @@ module.exports = class StatusCommand extends Command {
                 })
     }
 }
+
+module.exports = MinecraftStatusCommand;
