@@ -66,7 +66,7 @@ class PlayCommand extends Command {
             }else {
                 serverQueue.songs.push(songSearch);
                 message.delete();
-                return message.channel.send("I've added the song to the queue ```" + ` ${song.title}` + "```").then(msg => {
+                return message.channel.send("I've added the song to the queue ```" + ` ${songSearch.title}` + "```").then(msg => {
                     msg.delete({ timeout: 10000 })
                 })
             }
