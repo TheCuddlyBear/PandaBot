@@ -3,7 +3,7 @@ const { Command } = require('discord-akairo');
 class PurgeCommand extends Command {
     constructor(){
         super('purge',{
-            aliases: ['purge'],
+            aliases: ['purge', 'bulkdelete', 'clear'],
             category: 'utility',
             clientPermissions: ['MANAGE_MESSAGES'],
             description: {
