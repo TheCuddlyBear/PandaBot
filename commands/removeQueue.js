@@ -1,15 +1,9 @@
-const { Command } = require('discord-akairo');
+const {Command} = require('discord-akairo');
 
 class RemoveQueueCommand extends Command {
-    constructor() {
-        super('rmqueue', {
-            aliases: ['rmqueue']
-        })
-    }
+  constructor() { super('rmqueue', {aliases : [ 'rmqueue' ]}) }
 
-    exec(message) {
-        this.client.queue.delete(message.guild.id)
-    }
+  exec(message) { this.client.queue.delete(message.guild.id) }
 }
 
 module.exports = RemoveQueueCommand;
