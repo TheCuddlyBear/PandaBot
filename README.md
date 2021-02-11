@@ -23,6 +23,7 @@ Here is an example config.json:
     "youtube_api": "<youtube data api>",
     "hypixel_api": "<hypixel api>",
     "user": {
+        "updated": false,
         "name": "<bot username>",
         "avatar": "<bot avatar>"
     },
