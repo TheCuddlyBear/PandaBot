@@ -3,7 +3,7 @@ const { Command } = require('discord-akairo');
 class QueueCommand extends Command {
     constructor(){
         super('queue', {
-            aliases: ['q'],
+            aliases: ['queue', 'q'],
             category: 'music',
             description: {
                 content: "Returns the current queue"
@@ -18,6 +18,12 @@ class QueueCommand extends Command {
 
         serverQueue.songs.forEach(song => {
             messageA = messageA + `${song.title + "\n"}`
+        })
+
+        messageA = messageA + "```";
+
+        message.channel.send(messageA).then(msg => {
+            msg.delete({ timeout: 10000 })
         })
 
     }
