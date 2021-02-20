@@ -31,7 +31,6 @@ class ReadyListener extends Listener {
 
         this.client.setInterval(() => {
             let statusInt = Math.round(Math.random() * ((statusArray.length - 1) - 0) + 0);
-            console.log(statusInt)
 
             this.client.user.setActivity(statusArray[statusInt].text, {
                 type: statusArray[statusInt].type
