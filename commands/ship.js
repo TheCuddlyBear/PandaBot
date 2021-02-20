@@ -7,4 +7,8 @@ class ShipCommand extends Command {
             category: fun
         })
     }
+
+    exec(message){
+        
+    }
 }
