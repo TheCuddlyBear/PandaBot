@@ -26,7 +26,7 @@ class PlaylistCommand extends Command {
         })
     }
 
-    exec(message, { arg }){
+    async exec(message, { arg }){
         const client = this.client;
         const serverQueue = client.queue.get(message.guild.id);
 
@@ -105,3 +105,5 @@ class PlaylistCommand extends Command {
         }
     }
 }
+
+module.exports = PlaylistCommand;
