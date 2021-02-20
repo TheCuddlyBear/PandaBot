@@ -27,13 +27,6 @@ Here is an example config.json:
         "name": "<bot username>",
         "avatar": "<bot avatar>"
     },
-    "mysql": {
-        "host": "<mysql host>",
-        "port": "<mysql port>",
-        "username": "<mysql username>",
-        "password": "<mysql password>",
-        "database": "<mysql database>"
-    },
     "status": {
         "enabled": false,
         "type": "<WATCHING, LISTENING, STREAING or PLAYING>",
