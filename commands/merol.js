@@ -115,3 +115,5 @@ class MerolCommand extends Command {
         }
     }
 }
+
+module.exports = MerolCommand;
