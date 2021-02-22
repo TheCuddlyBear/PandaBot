@@ -25,8 +25,8 @@ class ReadyListener extends Listener {
             type: 'PLAYING',
             text: '9 + 10 = 21'
         }, {
-            type: 'COMPETING',
-            text: 'If Usain Bolt can run up to 27.44mph, that means legally he is not allowed to run in a school zone...'
+            type: 'WATCHING',
+            text: 'Magix being sad'
         }]
 
         this.client.setInterval(() => {
