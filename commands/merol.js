@@ -1,5 +1,12 @@
 const { Command } = require('discord-akairo');
 
+// Youtube
+const { youtube_api } = require('../config.json')
+const YoutubeAPI = require('discord-youtube-api');
+const searcher = new YoutubeAPI(youtube_api);
+const ytdl = require('ytdl-core');
+
+
 class MerolCommand extends Command {
     constructor(){
         super('merol', {
