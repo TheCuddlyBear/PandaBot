@@ -29,6 +29,7 @@
     "hive-api": "^1.14.2",
     "hypixel-api-reborn": "^5.1.1",
     "minecraft-server-util": "^3.4.2",
+    "musixmatch": "^0.1.6",
     "mysql": "^2.18.1",
     "node-pre-gyp": "^0.17.0",
     "unirest": "^0.6.0",
