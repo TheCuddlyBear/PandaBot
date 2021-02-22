@@ -45,3 +45,5 @@ class LyricsCommand extends Command {
         }
     }
 }
+
+module.exports = LyricsCommand;
