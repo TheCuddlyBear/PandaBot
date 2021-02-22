@@ -39,6 +39,8 @@ class LyricsCommand extends Command {
                     console.log(data);
                 }).catch(function(err){
                     console.log(err);
+            })
+        
             }
         }
     }
