@@ -13,7 +13,7 @@ class MerolCommand extends Command {
         })
     }
 
-    exec(message){
+    async exec(message){
         const serverQueue = this.client.queue.get(message.guild.id);
         const client = this.client;
 
