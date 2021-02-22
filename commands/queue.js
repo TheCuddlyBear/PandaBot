@@ -14,6 +14,9 @@ class QueueCommand extends Command {
     exec(message){
         const serverQueue = this.client.queue.get(message.guild.id);
         const client = this.client
+
+        message.delete();
+
         let messageA = "Current queue: \n ```"
 
         serverQueue.songs.forEach(song => {
