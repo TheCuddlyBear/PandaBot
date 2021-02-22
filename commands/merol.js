@@ -32,14 +32,14 @@ class MerolCommand extends Command {
                 msg.delete({ timeout: 10000 });
             })
         }else{
-            const hjbebm = await searcher.searchVideos("MEROL - HOU JE BEK EN BEF ME (official video)");
-            const injoa = await searcher.searchVideos("Zondag met Lubach ft. MEROL - Ik **** je op afstand");
-            const gr = await searcher.searchVideos("MEROL ft. Bokoesam - geen reet (official video)");
-            const jvv = await searcher.searchVideos("MEROL - Je Vais Vite (op de Campingdisco)");
-            const khegv = await searcher.searchVideos("Gotu Jim & MEROL – Krijg Het Er Geil Van");
-            const foefsafari = await searcher.searchVideos("MEROL - foefsafari");
-            const lmdm = await searcher.searchVideos("MEROL - LEKKER MET DE MEIDEN (official video)");
-            const kmdf = await searcher.searchVideos("MEROL - KERST MET DE FAM (official video)");
+            const hjbebm = await searcher.searchVideos("https://www.youtube.com/watch?v=7DZsIknkKJg");
+            const injoa = await searcher.searchVideos("https://www.youtube.com/watch?v=mm2jnH5f2Yw");
+            const gr = await searcher.searchVideos("https://www.youtube.com/watch?v=2YRJJbPABYU");
+            const jvv = await searcher.searchVideos("https://www.youtube.com/watch?v=vHKu0YxjYDU");
+            const khegv = await searcher.searchVideos("https://www.youtube.com/watch?v=w56jT6yH-yg");
+            const foefsafari = await searcher.searchVideos("https://www.youtube.com/watch?v=t3pcUIyKvfE");
+            const lmdm = await searcher.searchVideos("https://www.youtube.com/watch?v=Xt9Zf0JIEQo");
+            const kmdf = await searcher.searchVideos("https://www.youtube.com/watch?v=NPkpDKWlon0");
 
             if(!serverQueue){
                 const queueConstructor = { // constructor for the server queue
@@ -76,14 +76,14 @@ class MerolCommand extends Command {
                     return message.channel.send(`I wasn't able to join the voice chat ${err}`)
                 }
             }else {
-                const hjbebm = await searcher.searchVideos("MEROL - HOU JE BEK EN BEF ME (official video)");
-                const injoa = await searcher.searchVideos("Zondag met Lubach ft. MEROL - Ik **** je op afstand");
-                const gr = await searcher.searchVideos("MEROL ft. Bokoesam - geen reet (official video)");
-                const jvv = await searcher.searchVideos("MEROL - Je Vais Vite (op de Campingdisco)");
-                const khegv = await searcher.searchVideos("Gotu Jim & MEROL – Krijg Het Er Geil Van");
-                const foefsafari = await searcher.searchVideos("MEROL - foefsafari");
-                const lmdm = await searcher.searchVideos("MEROL - LEKKER MET DE MEIDEN (official video)");
-                const kmdf = await searcher.searchVideos("MEROL - KERST MET DE FAM (official video)");
+                const hjbebm = await searcher.searchVideos("https://www.youtube.com/watch?v=7DZsIknkKJg");
+                const injoa = await searcher.searchVideos("https://www.youtube.com/watch?v=mm2jnH5f2Yw");
+                const gr = await searcher.searchVideos("https://www.youtube.com/watch?v=2YRJJbPABYU");
+                const jvv = await searcher.searchVideos("https://www.youtube.com/watch?v=vHKu0YxjYDU");
+                const khegv = await searcher.searchVideos("https://www.youtube.com/watch?v=w56jT6yH-yg");
+                const foefsafari = await searcher.searchVideos("https://www.youtube.com/watch?v=t3pcUIyKvfE");
+                const lmdm = await searcher.searchVideos("https://www.youtube.com/watch?v=Xt9Zf0JIEQo");
+                const kmdf = await searcher.searchVideos("https://www.youtube.com/watch?v=NPkpDKWlon0");
 
 
                 queueConstructor.songs.push(hjbebm);
