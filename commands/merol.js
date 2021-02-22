@@ -32,7 +32,7 @@ class MerolCommand extends Command {
                 msg.delete({ timeout: 10000 });
             })
         }else{
-            const hjbebm = await searcher.searchVideos("https://www.youtube.com/watch?v=7DZsIknkKJg");
+            const hjbebm = await searcher.searchVideos("hou je bek en bef me");
             const injoa = await searcher.searchVideos("https://www.youtube.com/watch?v=mm2jnH5f2Yw");
             const gr = await searcher.searchVideos("https://www.youtube.com/watch?v=2YRJJbPABYU");
             const jvv = await searcher.searchVideos("https://www.youtube.com/watch?v=vHKu0YxjYDU");
@@ -61,9 +61,7 @@ class MerolCommand extends Command {
                 queueConstructor.songs.push(lmdm);
                 queueConstructor.songs.push(kmdf);
 
-                message.channel.send("Hou je bek en bef me!").then(msg => {
-                    msg.delete({ timeout: 10000 });
-                })
+                message.channel.send("Hou je bek en bef me!");
 
                 try{ // try to join voice channel of user
                     let connection = await vc.join();
@@ -76,7 +74,7 @@ class MerolCommand extends Command {
                     return message.channel.send(`I wasn't able to join the voice chat ${err}`)
                 }
             }else {
-                const hjbebm = await searcher.searchVideos("https://www.youtube.com/watch?v=7DZsIknkKJg");
+                const hjbebm = await searcher.searchVideos("hou je bek en bef me");
                 const injoa = await searcher.searchVideos("https://www.youtube.com/watch?v=mm2jnH5f2Yw");
                 const gr = await searcher.searchVideos("https://www.youtube.com/watch?v=2YRJJbPABYU");
                 const jvv = await searcher.searchVideos("https://www.youtube.com/watch?v=vHKu0YxjYDU");
@@ -96,9 +94,7 @@ class MerolCommand extends Command {
                 queueConstructor.songs.push(kmdf);
 
                 message.delete();
-                return message.channel.send("Hou je bek en bef me!").then(msg => {
-                    msg.delete({ timeout: 10000 })
-                })
+                return message.channel.send("Hou je bek en bef me!");
             }
         }
 
