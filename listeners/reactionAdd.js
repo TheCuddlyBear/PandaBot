@@ -12,35 +12,40 @@ class ReactionListener extends Listener {
         })
     }
     exec(messageReaction, user){
-        const reaction = messageReaction;
+    const reaction = messageReaction;
     const message = reaction.message;
     const emoji = reaction.emoji
 
-    switch(emoji.name){
-        case '🇺🇸':
-            translation(message, 'en');
-            reaction.remove();
-            break;
-        case '🇳🇱':
-            translation(message, 'nl')
-            reaction.remove();
-            break;
-        case '🇫🇷':
-            translation(message, 'fr')
-            reaction.remove();
-            break;
-        case '🇪🇸':
-            translation(message, 'es');
-            reaction.remove();
-            break;
-        case '🇨🇳':
-            translation(message, 'zh-CN');
-            reaction.remove();
-            break;
-        case '🇯🇵':
-            translation(message, 'ja');
-            reaction.remove();
-            break;
+    if(message.id === "813255961434521651" && message.guild.id === "795163254233497620"){
+        const role = message.guild.roles.find(role => role.name === "Member");
+        user.member.addRole(role);
+    }else {
+        switch(emoji.name){
+            case '🇺🇸':
+                translation(message, 'en');
+                reaction.remove();
+                break;
+            case '🇳🇱':
+                translation(message, 'nl')
+                reaction.remove();
+                break;
+            case '🇫🇷':
+                translation(message, 'fr')
+                reaction.remove();
+                break;
+            case '🇪🇸':
+                translation(message, 'es');
+                reaction.remove();
+                break;
+            case '🇨🇳':
+                translation(message, 'zh-CN');
+                reaction.remove();
+                break;
+            case '🇯🇵':
+                translation(message, 'ja');
+                reaction.remove();
+                break;
+        }
     }
 
     function translation(message, lang){

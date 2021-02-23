@@ -84,14 +84,14 @@ class MerolCommand extends Command {
                 const kmdf = await searcher.searchVideos("https://www.youtube.com/watch?v=NPkpDKWlon0");
 
 
-                queueConstructor.songs.push(hjbebm);
-                queueConstructor.songs.push(injoa);
-                queueConstructor.songs.push(gr);
-                queueConstructor.songs.push(jvv);
-                queueConstructor.songs.push(khegv);
-                queueConstructor.songs.push(foefsafari);
-                queueConstructor.songs.push(lmdm);
-                queueConstructor.songs.push(kmdf);
+                serverQueue.songs.push(hjbebm);
+                serverQueue.songs.push(injoa);
+                serverQueue.songs.push(gr);
+                serverQueue.songs.push(jvv);
+                serverQueue.songs.push(khegv);
+                serverQueue.songs.push(foefsafari);
+                serverQueue.songs.push(lmdm);
+                serverQueue.songs.push(kmdf);
 
                 message.delete();
                 return message.channel.send("Hou je bek en bef me!");

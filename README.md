@@ -22,6 +22,7 @@ Here is an example config.json:
     "token": "<discord token>",
     "youtube_api": "<youtube data api>",
     "hypixel_api": "<hypixel api>",
+    "genius_token": "<genius token>",
     "user": {
         "updated": false,
         "name": "<bot username>",
