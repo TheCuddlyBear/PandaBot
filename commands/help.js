@@ -59,8 +59,8 @@ class HelpCommand extends Command {
 
 	async execCommandList(message) {
 		const embed = this.client.util.embed()
-			.setTitle("Panda Jr. **Help**")
-			.setFooter(`Panda Jr. v${version}`)
+			.setTitle("Panda **Help**")
+			.setFooter(`Panda v${version}`)
 			.setThumbnail('https://minecraft-mp.com/images/favicon/277055.png')
 			.setColor('#FF0033')
 			.addField('Command List',

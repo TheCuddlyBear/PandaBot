@@ -51,7 +51,7 @@ class ReactionListener extends Listener {
                 .setDescription(res.text)
             
                 if(user.id === message.member.id){
-                    embed.setFooter(`Panda Jr. v${version}`)
+                    embed.setFooter(`Panda v${version}`)
                 }else{
                     embed.setFooter(`Requested by ${user.username}`)
                 }

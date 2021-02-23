@@ -20,7 +20,7 @@ class MinecraftStatusCommand extends Command {
                     const statusEmbed = new Discord.MessageEmbed() // Create embed with status
                         .setColor('#FF0033')
                         .setTitle('Roses Minecraft Status')
-                        .setFooter(`Panda Jr. v${version}`)
+                        .setFooter(`Panda v${version}`)
                         .setThumbnail('https://minecraft-mp.com/images/favicon/277055.png')
                         .addFields(
                             { name: 'Server IP', value: 'play.takato.eu' },
