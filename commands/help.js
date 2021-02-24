@@ -1,5 +1,5 @@
 const { Command } = require('discord-akairo');
-const { version } = require('../package.json')
+const { version, botname } = require('../package.json')
 
 class HelpCommand extends Command {
 	constructor() {
@@ -59,8 +59,8 @@ class HelpCommand extends Command {
 
 	async execCommandList(message) {
 		const embed = this.client.util.embed()
-			.setTitle("Panda **Help**")
-			.setFooter(`Panda v${version}`)
+			.setTitle(`${botname} **Help**`)
+			.setFooter(`${botname} v${version}`)
 			.setThumbnail('https://minecraft-mp.com/images/favicon/277055.png')
 			.setColor('#FF0033')
 			.addField('Command List',

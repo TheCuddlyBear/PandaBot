@@ -2,7 +2,7 @@ const { Listener } = require('discord-akairo');
 const Discord = require('discord.js')
 const config = require('../config.json');
 const translate = require('@vitalets/google-translate-api');
-const { version } = require('../package.json');
+const { version, botname } = require('../package.json');
 
 class ReactionListener extends Listener {
     constructor() {
@@ -56,7 +56,7 @@ class ReactionListener extends Listener {
                 .setDescription(res.text)
             
                 if(user.id === message.member.id){
-                    embed.setFooter(`Panda v${version}`)
+                    embed.setFooter(`${botname} v${version}`)
                 }else{
                     embed.setFooter(`Requested by ${user.username}`)
                 }

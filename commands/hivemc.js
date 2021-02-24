@@ -1,6 +1,6 @@
 // HiveAPI
 const hive = require('hive-api');
-const { version } = require('../package.json');
+const { version, botname } = require('../package.json');
 const Discord = require('discord.js');
 
 const { Command } = require('discord-akairo');
@@ -37,7 +37,7 @@ class HiveCommand extends Command {
                 .setTitle(playername + suffix + " HiveMC stats")
                 .setThumbnail('https://minotar.net/avatar/' + playername)
                 .setTimestamp()
-                .setFooter(`HiveMC Stats • Panda Jr. v${version}`)
+                .setFooter(`HiveMC Stats • ${botname} v${version}`)
                 .addFields({
                     name: 'Rank',
                     value: info.rank.humanName,

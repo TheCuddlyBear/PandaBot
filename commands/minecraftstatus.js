@@ -1,7 +1,7 @@
 const minecraftUtil = require('minecraft-server-util');
 const Discord = require('discord.js');
 const { Command } = require('discord-akairo')
-const { version } = require('../package.json');
+const { version, botname } = require('../package.json');
 
 class MinecraftStatusCommand extends Command {
     constructor(){
@@ -20,7 +20,7 @@ class MinecraftStatusCommand extends Command {
                     const statusEmbed = new Discord.MessageEmbed() // Create embed with status
                         .setColor('#FF0033')
                         .setTitle('Roses Minecraft Status')
-                        .setFooter(`Panda v${version}`)
+                        .setFooter(`${botname} v${version}`)
                         .setThumbnail('https://minecraft-mp.com/images/favicon/277055.png')
                         .addFields(
                             { name: 'Server IP', value: 'play.takato.eu' },

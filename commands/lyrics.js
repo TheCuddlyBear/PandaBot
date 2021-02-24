@@ -1,7 +1,7 @@
 
 const { Command } = require("discord-akairo");
 const config = require('../config.json')
-const { version } = require('../package.json');
+const { version, botname } = require('../package.json');
 const Discord = require('discord.js')
 
 const Genius = require("genius-lyrics");
@@ -47,7 +47,7 @@ class LyricsCommand extends Command {
                         .setColor('#6495ed')
                         .setTitle(`Lyrics for: ${song.title}`)
                         .setDescription(lyrics)
-                        .setFooter(`Panda v${version}`)
+                        .setFooter(`${botname} v${version}`)
 
                     message.reply(embed)
                 });

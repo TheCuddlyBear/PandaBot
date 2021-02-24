@@ -1,5 +1,6 @@
 {
   "name": "discordbot",
+  "botname": "MEROL",
   "version": "3.0.1",
   "description": "",
   "main": "index.js",

@@ -5,7 +5,7 @@ const discord = require('discord.js');
 const { hypixel_api } = require('../config.json');
 const Hypixel = require('hypixel-api-reborn');
 const hypixel = new Hypixel.Client(hypixel_api);
-const { version } = require('../package.json');
+const { version, botname } = require('../package.json');
 
 
 class HypixelCommand extends Command {
@@ -72,7 +72,7 @@ class HypixelCommand extends Command {
                     .setTitle(player.nickname + suffix + " Hypixel stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter(`Hypixel Stats • Panda v${version}`)
+                    .setFooter(`Hypixel Stats • ${botname} v${version}`)
                     .addFields({
                         name: 'Rank',
                         value: player.rank,
@@ -117,7 +117,7 @@ class HypixelCommand extends Command {
                     .setTitle(player.nickname + suffix + " Skywars stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter(`Hypixel Stats • Panda v${version}`)
+                    .setFooter(`Hypixel Stats • ${botname} v${version}`)
                     .addFields({
                         name: 'Coins',
                         value: player.stats.skywars.coins,
@@ -166,7 +166,7 @@ class HypixelCommand extends Command {
                     .setTitle(player.nickname + suffix + " Murder Mystery stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter(`Hypixel Stats • Panda v${version}`)
+                    .setFooter(`Hypixel Stats • ${botname} v${version}`)
                     .addFields({
                         name: 'Coins',
                         value: player.stats.murdermystery.coins,
@@ -215,7 +215,7 @@ class HypixelCommand extends Command {
                     .setTitle(player.nickname + suffix + " Bedwars stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter(`Hypixel Stats • Panda Jr. v${version}`)
+                    .setFooter(`Hypixel Stats • ${botname} v${version}`)
                     .addFields({
                         name: 'Coins',
                         value: player.stats.bedwars.coins,
@@ -268,7 +268,7 @@ class HypixelCommand extends Command {
                     .setTitle(player.nickname + suffix + " Build Battle stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter(`Hypixel Stats • Panda v${version}`)
+                    .setFooter(`Hypixel Stats • ${botname} v${version}`)
                     .addFields({
                         name: 'Score',
                         value: player.stats.buildbattle.score,
@@ -321,7 +321,7 @@ class HypixelCommand extends Command {
                     .setTitle(player.nickname + suffix + " VampireZ stats")
                     .setThumbnail('https://minotar.net/avatar/' + player.nickname)
                     .setTimestamp()
-                    .setFooter(`Hypixel Stats • Panda v${version}`)
+                    .setFooter(`Hypixel Stats • ${botname} v${version}`)
                     .addFields({
                         name: 'Human',
                         value: `Kills: ${player.stats.vampirez.human.kills} \n Deaths: ${player.stats.vampirez.human.deaths} \n K/D Ratio: ${player.stats.vampirez.human.KDRatio} \n Wins: ${player.stats.vampirez.human.wins}`,
@@ -353,7 +353,7 @@ class HypixelCommand extends Command {
                     .setColor('#FF0033')
                     .setTitle(guild.name + suffix + " stats")
                     .setTimestamp()
-                    .setFooter(`Hypixel Stats • Panda v${version}`)
+                    .setFooter(`Hypixel Stats • ${botname} v${version}`)
                     .addFields({
                         name: 'Level',
                         value: guild.level,
