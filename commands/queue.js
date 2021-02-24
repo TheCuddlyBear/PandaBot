@@ -17,7 +17,7 @@ class QueueCommand extends Command {
 
         message.delete();
 
-        let messageA = "Current queue: \n ```"
+        let messageA = "Current queue: \n```"
 
         serverQueue.songs.forEach(song => {
             messageA = messageA + `${song.title + "\n"}`
