@@ -12,7 +12,7 @@
     "url": "git+https://github.com/TheCuddlyBear/PandaBot.git"
   },
   "author": "TheCuddlyBear",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/TheCuddlyBear/PandaBot/issues"
   },
