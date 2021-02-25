@@ -12,14 +12,11 @@ class ReadyListener extends Listener {
     exec() {
         console.log(`I have logged in as ${this.client.user.username} (${this.client.user.id})`)
 
-        this.client.user.setActivity('Roses Discord Server', {
-            type: 'WATCHING'
+        this.client.user.setActivity('foefsafari', {
+            type: 'LISTENING'
         })
 
         let statusArray = [{
-            type: 'WATCHING',
-            text: 'Roses Discord Server'
-        }, {
             type: 'LISTENING',
             text: 'Yara singing in the rain'
         }, {
@@ -42,7 +39,7 @@ class ReadyListener extends Listener {
             this.client.user.setActivity(statusArray[statusInt].text, {
                 type: statusArray[statusInt].type
             })
-        }, 10000)
+        }, 20000)
         
         /* uncomment this code to use status in configuration
         if(config.user.updated === true){
