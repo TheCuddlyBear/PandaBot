@@ -11,6 +11,7 @@ class ReadyListener extends Listener {
 
     exec() {
         console.log(`I have logged in as ${this.client.user.username} (${this.client.user.id})`)
+
         this.client.user.setActivity('Roses Discord Server', {
             type: 'WATCHING'
         })
@@ -27,6 +28,12 @@ class ReadyListener extends Listener {
         }, {
             type: 'WATCHING',
             text: 'Magix being sad'
+        }, {
+            type: 'LISTENING',
+            text: 'Hou je bek en bef me'
+        }, {
+            type: 'LISTENING',
+            text: 'foefsafari'
         }]
 
         this.client.setInterval(() => {
