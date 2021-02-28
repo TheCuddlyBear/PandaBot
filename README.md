@@ -9,7 +9,7 @@ Here are the current implemented features, features with an (&#42;) have been im
 * Hypixel statistics&#42;
 * Minecraft server status
 * HiveMC statistics&#42;
-* Ship command&#42;
+* Translations (any language to dutch, english, spanish, chinese, japanese and french)&#42;
 * Moderation commands (bulkdelete, etc)&#42;
 * Ilse meme command
 
