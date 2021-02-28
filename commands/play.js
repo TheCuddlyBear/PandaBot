@@ -51,12 +51,14 @@ class PlayCommand extends Command {
                 };
                 client.queue.set(message.guild.id, queueConstructor);
 
-                queueConstructor.songs.push(songSearch);
+                const serverQueue = client.queue.get(message.guild.id);
+
+                serverQueue.songs.push(songSearch);
 
                 try{ // try to join voice channel of user
                     let connection = await vc.join();
-                    queueConstructor.connection = connection;
-                    play(message.guild, queueConstructor.songs[0]);
+                    serverQueue.connection = connection;
+                    play(message.guild, serverQueue.songs[0]);
                     message.delete();
                 }catch (err){
                     console.error(err);

@@ -52,21 +52,23 @@ class MerolCommand extends Command {
                 };
                 client.queue.set(message.guild.id, queueConstructor);
 
-                queueConstructor.songs.push(hjbebm);
-                queueConstructor.songs.push(injoa);
-                queueConstructor.songs.push(gr);
-                queueConstructor.songs.push(jvv);
-                queueConstructor.songs.push(khegv);
-                queueConstructor.songs.push(foefsafari);
-                queueConstructor.songs.push(lmdm);
-                queueConstructor.songs.push(kmdf);
+                const serverQueue = client.queue.get(message.guild.id);
+
+                serverQueue.songs.push(hjbebm);
+                serverQueue.songs.push(injoa);
+                serverQueue.songs.push(gr);
+                serverQueue.songs.push(jvv);
+                serverQueue.songs.push(khegv);
+                serverQueue.songs.push(foefsafari);
+                serverQueue.songs.push(lmdm);
+                serverQueue.songs.push(kmdf);
 
                 message.channel.send("Hou je bek en bef me!");
 
                 try{ // try to join voice channel of user
                     let connection = await vc.join();
-                    queueConstructor.connection = connection;
-                    play(message.guild, queueConstructor.songs[0]);
+                    serverQueue.connection = connection;
+                    play(message.guild, serverQueue.songs[0]);
                     message.delete();
                 }catch (err){
                     console.error(err);

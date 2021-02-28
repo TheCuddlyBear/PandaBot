@@ -53,9 +53,11 @@ class PlaylistCommand extends Command {
                 };
                 client.queue.set(message.guild.id, queueConstructor);
 
+                const serverQueue = client.queue.get(message.guild.id);
+
                 var i
                 for (i = 0; i < playlist.length; i++) {
-                    queueConstructor.songs.push(playlist[i]); // push the playlist songs into queue
+                    serverQueue.songs.push(playlist[i]); // push the playlist songs into queue
                   }
 
                   message.channel.send("I have added all the songs from the playlist to the queue!").then(msg => {
@@ -64,8 +66,8 @@ class PlaylistCommand extends Command {
 
                 try{
                     let connection = await vc.join();
-                    queueConstructor.connection = connection;
-                    play(message.guild, queueConstructor.songs[0]);
+                    serverQueue.connection = connection;
+                    play(message.guild, serverQueue.songs[0]);
                     message.delete();
                 }catch (err){
                     console.error(err);
