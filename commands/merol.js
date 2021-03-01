@@ -4,7 +4,7 @@ const { Command } = require('discord-akairo');
 const { youtube_api } = require('../config.json')
 const YoutubeAPI = require('discord-youtube-api');
 const searcher = new YoutubeAPI(youtube_api);
-const ytdl = require('ytdl-core');
+const ytdl = require('ytdl-core-discord');
 
 
 class MerolCommand extends Command {
@@ -100,7 +100,7 @@ class MerolCommand extends Command {
             }
         }
 
-        function play(guild, song){
+        async function play(guild, song){
             const serverQueue = client.queue.get(guild.id);
             if(!song){ // If there are no songs left, leave voice channel
                 serverQueue.voiceChannel.leave();
@@ -109,7 +109,7 @@ class MerolCommand extends Command {
             }
             console.log(`Now playing: ${song.title}`); // Announce what song is now playing to console
             const dispatcher = serverQueue.connection
-                .play(ytdl(song.url), { volume: serverQueue.volume })
+                .play(await ytdl(song.url), { type: 'opus', volume: serverQueue.volume })
                 .on('finish', () =>{
                     serverQueue.songs.shift();
                     play(guild, serverQueue.songs[0]);
