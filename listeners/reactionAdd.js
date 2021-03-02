@@ -14,7 +14,7 @@ class ReactionListener extends Listener {
     exec(messageReaction, user){
     const reaction = messageReaction;
     const message = reaction.message;
-    const emoji = reaction.emoji
+    const emoji = reaction.emoji;
 
     if(message.id === "813255961434521651" && message.guild.id === "795163254233497620"){
         const role = message.guild.roles.find(role => role.name === "Member");
