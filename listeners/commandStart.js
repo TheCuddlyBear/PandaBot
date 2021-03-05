@@ -2,9 +2,9 @@ const { Listener } = require('discord-akairo');
 
 const logger = require('../logger')
 
-class CommandListener extends Listener {
+class CommandStartListener extends Listener {
     constructor(){
-        super('command', {
+        super('commandStart', {
             emitter: 'commandHandler',
             event: 'commandStarted'
         })
@@ -15,4 +15,6 @@ class CommandListener extends Listener {
     }
 }
 
-module.exports = CommandListener;
+
+
+module.exports = CommandStartListener;
