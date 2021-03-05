@@ -3,7 +3,14 @@ const config = require('./config.json');
 const Discord = require('discord.js')
 
 // Logger
-const { logger } = require('./logger')
+const logger = require('./logger')
+let token;
+
+if(config.dev){
+	token = config.dev_token
+}else{
+	token = config.token
+}
 
 class PandaClient extends AkairoClient {
 	constructor() {
@@ -25,6 +32,12 @@ class PandaClient extends AkairoClient {
 			directory: './listeners/'
 		})
 
+		this.listenerHandler.setEmitters({
+			commandHandler: this.commandHandler,
+			inhibitorHandler: this.inhibitorHandler,
+			listenerHandler: this.listenerHandler
+		});
+
 		this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
 		this.commandHandler.useListenerHandler(this.listenerHandler);
 		this.commandHandler.loadAll();
@@ -39,4 +52,4 @@ const client = new PandaClient();
 // music queue
 client.queue = new Discord.Collection();
 
-client.login(config.token);
+client.login(token);

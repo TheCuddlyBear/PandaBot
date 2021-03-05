@@ -74,7 +74,8 @@ class HelpCommand extends Command {
 				general: '📝\u2000General',
 				music: '🎵\u2000Music',
 				utility: ':briefcase:\u2000Utility',
-                minecraft: '🧱\u2000Minecraft'
+                minecraft: '🧱\u2000Minecraft',
+				fun: ':video_game:\u2000Minecraft'
 			}[category.id];
 
 			if (title) embed.addField(title, `\`${category.map(cmd => cmd.aliases[0]).join('` `')}\``, true);
