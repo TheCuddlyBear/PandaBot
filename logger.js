@@ -36,9 +36,15 @@ function getFullDate(){
     return fullDate;
 }
 
-fs.rename('./logs/latest.log', "./logs/" + getFullDate() + ".log", function (error){
-    if(error) console.log(error)
-})
+try {
+    if (fs.existsSync("./logs/latest.log")) {
+        fs.rename('./logs/latest.log', "./logs/" + getFullDate() + ".log", function (error){
+            if(error) console.log(error)
+        })
+    }
+  } catch(e) {
+    console.log("An error occurred." + e)
+  }
 
 const logger = winston.createLogger({
   level: 'info',
@@ -56,15 +62,5 @@ const logger = winston.createLogger({
     new winston.transports.Console(),
   ],
 });
-
-//
-// If we're not in production then log to the `console` with the format:
-// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
-//
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple(),
-  }));
-}
 
 module.exports = logger;
