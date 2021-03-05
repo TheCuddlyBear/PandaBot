@@ -38,6 +38,7 @@
     "node-pre-gyp": "^0.17.0",
     "unirest": "^0.6.0",
     "weather-js": "^2.0.0",
+    "winston": "^3.3.3",
     "ytdl-core": "^4.5.0",
     "ytdl-core-discord": "^1.2.5",
     "ytsearcher": "^1.2.3"

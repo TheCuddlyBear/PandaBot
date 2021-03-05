@@ -2,6 +2,9 @@ const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = requ
 const config = require('./config.json');
 const Discord = require('discord.js')
 
+// Logger
+const { logger } = require('./logger')
+
 class PandaClient extends AkairoClient {
 	constructor() {
 		super({

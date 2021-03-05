@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 const config = require('../config.json');
 const translate = require('@vitalets/google-translate-api');
 const { version, botname } = require('../package.json');
+const logger = require('../logger')
 
 class ReactionListener extends Listener {
     constructor() {
@@ -60,12 +61,13 @@ class ReactionListener extends Listener {
                 }else{
                     embed.setFooter(`Requested by ${user.username}`)
                 }
-
+                
             message.channel.send(embed).then(msg => {
                 msg.delete({ timeout: 120000 })
+                logger.notice(`Succesfully translated message: ${msg.id}`)
             })
         }).catch(err => {
-            console.error(err)
+            logger.error(err)
         })
     }
     }

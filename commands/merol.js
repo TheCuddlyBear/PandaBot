@@ -6,6 +6,7 @@ const YoutubeAPI = require('discord-youtube-api');
 const searcher = new YoutubeAPI(youtube_api);
 const ytdl = require('ytdl-core-discord');
 
+const logger = require('../logger')
 
 class MerolCommand extends Command {
     constructor(){
@@ -107,7 +108,7 @@ class MerolCommand extends Command {
                 client.queue.delete(guild.id);
                 return;
             }
-            console.log(`Now playing: ${song.title}`); // Announce what song is now playing to console
+            logger.info(`Now playing: ${song.title} in ${guild.id}`) // Announce what song is now playing to console
             const dispatcher = serverQueue.connection
                 .play(await ytdl(song.url), { type: 'opus', volume: serverQueue.volume })
                 .on('finish', () =>{

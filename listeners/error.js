@@ -1,5 +1,7 @@
 const { Listener } = require('discord-akairo');
 
+const logger = require('../logger')
+
 class ErrorListener extends Listener{
     constructor() {
         super('error', {
@@ -9,7 +11,7 @@ class ErrorListener extends Listener{
     }
 
     exec() {
-        console.error;
+        logger.error;
     }
 }
 

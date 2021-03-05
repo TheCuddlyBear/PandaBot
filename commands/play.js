@@ -6,6 +6,7 @@ const YoutubeAPI = require('discord-youtube-api');
 const searcher = new YoutubeAPI(youtube_api);
 const ytdl = require('ytdl-core-discord')
 
+const logger = require('../logger')
 
 class PlayCommand extends Command {
     constructor(){
@@ -61,7 +62,7 @@ class PlayCommand extends Command {
                     play(message.guild, serverQueue.songs[0]);
                     message.delete();
                 }catch (err){
-                    console.error(err);
+                    logger.error(err);
                     client.queue.delete(message.guild.id);
                     return message.channel.send(`I wasn't able to join the voice chat ${err}`)
                 }
@@ -81,7 +82,7 @@ class PlayCommand extends Command {
                 client.queue.delete(guild.id);
                 return;
             }
-            console.log(`Now playing: ${song.title}`); // Announce what song is now playing to console
+            logger.info(`Now playing: ${song.title} in ${guild.id}`) // Announce what song is now playing to console
             const dispatcher = serverQueue.connection
                 .play(await ytdl(song.url), { type: 'opus', volume: serverQueue.volume })
                 .on('finish', () =>{

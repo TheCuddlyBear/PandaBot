@@ -1,6 +1,8 @@
 const { Listener } = require('discord-akairo');
 const config = require('../config.json');
 
+const logger = require('../logger')
+
 class ReadyListener extends Listener {
     constructor() {
         super('ready', {
@@ -10,8 +12,11 @@ class ReadyListener extends Listener {
     }
 
     exec() {
-        console.log(`I have logged in as ${this.client.user.username} (${this.client.user.id})`)
-
+        logger.log({
+            level: 'info',
+            message: `I have logged in as ${this.client.user.username} (${this.client.user.id})`
+        })
+        
         this.client.user.setActivity('foefsafari', {
             type: 'LISTENING'
         })
